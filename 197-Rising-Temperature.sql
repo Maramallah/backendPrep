@@ -8,4 +8,4 @@ FROM (
         LAG(temperature) OVER (ORDER BY recordDate) AS prev_temp
     FROM Weather
 ) t
-WHERE recordDate = DATE_ADD(prev_date, INTERVAL 1 DAY) and temperature>prev_temp
+WHERE DATEDIFF(recordDate, prev_date) = 1 and temperature>prev_temp
