@@ -1,4 +1,6 @@
 # Write your MySQL query statement below
+#to return all sales for product we won`t group by it 
+
 select product_id,
  year  as first_year ,
    quantity , 
