@@ -1,8 +1,17 @@
 # Write your MySQL query statement below
-select person_name from (
-select person_name , 
-sum(weight) over (order by turn) as TotalWeight
-from Queue) t
-where TotalWeight<= 1000
-order by TotalWeight desc
-limit 1
+WITH CumulativeWeight AS (
+    SELECT 
+        person_name,
+        SUM(weight) OVER(ORDER BY turn ASC) AS Total_Weight
+    FROM 
+        Queue
+)
+SELECT 
+    person_name
+FROM 
+    CumulativeWeight
+WHERE 
+    Total_Weight <= 1000
+ORDER BY 
+    Total_Weight DESC
+LIMIT 1;
