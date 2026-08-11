@@ -1,4 +1,5 @@
 # Write your MySQL query statement below
+-- max makes it return null if there`s no rows 
 select  MAX(salary) as SecondHighestSalary from (
 select dense_rank() over (order by salary desc ) as r , salary 
 from Employee) t
